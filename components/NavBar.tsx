@@ -1,3 +1,4 @@
+"use client";
 import { FaReddit } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
@@ -8,10 +9,30 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const NavBar = () => {
+  const [isFixed, setIsFixed] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div>
+    <div
+      className={`fixed left-0 top-0 z-50 w-full bg-gray-800 ${isFixed ? "shadow-lg" : ""}`}
+    >
       <nav className="flex h-[60px] items-center justify-between">
         <div className="flex items-center">
           <RxHamburgerMenu

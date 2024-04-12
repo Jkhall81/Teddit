@@ -31,7 +31,7 @@ export const SideBar = () => {
     }
   }, [isVisible]);
   return (
-    <aside className="left-0 top-0 hidden h-screen w-[280px] border-r border-white lg:flex">
+    <aside className="left-0 top-0 mt-[60px] hidden h-screen w-[280px] border-r border-white lg:flex">
       <SideBarItem
         ref={firstItemRef}
         title="Home"
