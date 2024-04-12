@@ -14,12 +14,14 @@ export const SideBarHeader = () => {
         title="Home"
         icon={GoHomeFill}
         size={25}
+        href="/home"
       />
       <SideBarItem
         iconStyles={pathname === "/popular" ? "bg-gray-800" : ""}
         title="Popular"
         icon={BsArrowUpRightCircle}
         size={25}
+        href="/popular"
       />
     </div>
   );
