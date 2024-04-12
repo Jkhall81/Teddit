@@ -1,27 +1,30 @@
-"use client";
-import React, { forwardRef } from "react";
+import { cn } from "@/lib/utils";
 
 interface SideBarItemProps {
   title: string;
   icon: React.ComponentType<{ size: number; color: string; className: string }>;
   size: number;
+  iconStyles: string;
 }
 
-export const SideBarItem = forwardRef<HTMLDivElement, SideBarItemProps>(
-  ({ title, icon, size }, ref) => {
-    const IconComponent = icon;
+export const SideBarItem = ({
+  title,
+  icon,
+  size,
+  iconStyles,
+}: SideBarItemProps) => {
+  const IconComponent = icon;
 
-    return (
-      <div
-        ref={ref}
-        tabIndex={0}
-        className="mx-auto mt-5 flex h-[45px] w-[85%] items-center rounded-lg p-4 outline-none focus:bg-gray-800"
-      >
-        <IconComponent className="ml-3" size={size} color="white" />
-        <span className="ml-4 text-white">{title}</span>
-      </div>
-    );
-  },
-);
-
-SideBarItem.displayName = "SideBarItem";
+  return (
+    <div
+      tabIndex={0}
+      className={cn(
+        "mx-auto flex h-[45px] w-[85%] items-center rounded-lg p-4 outline-none hover:bg-gray-700",
+        iconStyles,
+      )}
+    >
+      <IconComponent className="ml-3" size={size} color="white" />
+      <span className="ml-4 text-white">{title}</span>
+    </div>
+  );
+};
